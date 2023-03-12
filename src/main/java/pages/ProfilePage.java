@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -15,11 +16,13 @@ public class ProfilePage {
         }
     }
 
+    @Step("клик на кнопку 'Выход' со страницы профиля")
     public LoginPage exitButtonClick() {
         exitButton.click();
         return new LoginPage();
     }
 
+    @Step("Проверка что открыта страница профиля")
     public boolean isDisplayed() {
         profilePageTitle.shouldBe(Condition.visible);
         return profilePageTitle.isDisplayed();

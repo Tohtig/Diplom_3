@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import model.UserAccount;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import pages.RegistrationPage;
@@ -25,10 +26,10 @@ public class RegistrationTest extends WebDriverParams {
     @AfterEach
     public void cleanUp() {
         apiServices.deleteAccounts(testData);
-//        Selenide.closeWebDriver();
     }
 
     @Test
+    @DisplayName("Успешная регистрация")
     public void successRegistration() {
         account = new UserAccount().
                 setEmail(faker.internet().emailAddress()).
@@ -42,6 +43,7 @@ public class RegistrationTest extends WebDriverParams {
     }
 
     @Test
+    @DisplayName("Проверка ошибки для некорректного пароля. Минимальный пароль шесть символов")
     public void registrationFiveCharPassReject() {
         account = new UserAccount().
                 setEmail(faker.internet().emailAddress()).

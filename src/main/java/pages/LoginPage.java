@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -16,6 +17,7 @@ public class LoginPage {
         }
     }
 
+    @Step("заполнить поля для авторизации пользователя")
     public MainPage login(final String email, final String password) {
         emailField.setValue(email);
         passwordField.sendKeys(password);
@@ -23,6 +25,7 @@ public class LoginPage {
         return new MainPage();
     }
 
+    @Step("проверка что видна кнопка 'Вход' loginPage")
     public boolean isDisplayed() {
         loginButton.shouldBe(Condition.visible);
         return loginButton.isDisplayed();

@@ -5,6 +5,7 @@ import com.github.javafaker.Faker;
 import model.UserAccount;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import pages.AppHeaderPage;
 import pages.MainPage;
@@ -40,6 +41,7 @@ public class LoginTest extends WebDriverParams {
     }
 
     @Test
+    @DisplayName("Вход по кнопке 'Войти в аккаунт' на главной")
     public void loginFromMainPageByLoginButton() {
         open(MainPage.URL);
         MainPage mainPage = new MainPage().clickLoginButton().login(account.getEmail(), account.getPassword());
@@ -47,6 +49,7 @@ public class LoginTest extends WebDriverParams {
     }
 
     @Test
+    @DisplayName("Вход через кнопку 'Личный кабинет'")
     public void loginFromMainPageByProfileButton() {
         open(MainPage.URL);
         MainPage mainPage = new AppHeaderPage().clickProfileButtonByUnauthorizedUser().login(account.getEmail(), account.getPassword());
@@ -54,6 +57,7 @@ public class LoginTest extends WebDriverParams {
     }
 
     @Test
+    @DisplayName("Вход через кнопку в форме регистрации")
     public void loginFromRegistrationPageByLoginButton() {
         open(RegistrationPage.URL);
         MainPage mainPage = new RegistrationPage().loginButtonClick().login(account.getEmail(), account.getPassword());
@@ -61,6 +65,7 @@ public class LoginTest extends WebDriverParams {
     }
 
     @Test
+    @DisplayName("Вход через кнопку в форме восстановления пароля")
     public void loginFromPasswordRecoveryPageByLoginButton() {
         open(PasswordRecoveryPage.URL);
         MainPage mainPage = new PasswordRecoveryPage().loginButtonClick().login(account.getEmail(), account.getPassword());

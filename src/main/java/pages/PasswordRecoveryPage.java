@@ -2,6 +2,7 @@ package pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -16,11 +17,13 @@ public class PasswordRecoveryPage {
         }
     }
 
+    @Step("клик на кнопку 'Войти в аккаунт' со страницы восстановления пароля")
     public LoginPage loginButtonClick() {
         loginButton.click();
         return new LoginPage();
     }
 
+    @Step("проверка что отображается текст 'Восстановление пароля'")
     public boolean isDisplayed() {
         passRecoveryPageTitle.shouldBe(Condition.visible);
         return passRecoveryPageTitle.isDisplayed();
