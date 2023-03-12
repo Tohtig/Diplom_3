@@ -4,32 +4,32 @@ import apiService.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
 import org.apache.commons.lang3.RandomStringUtils;
-import org.junit.After;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
 import pages.LoginPage;
 import pages.RegistrationPage;
-
-import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 import static com.codeborne.selenide.Selenide.open;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class RegistrationTest {
+public class RegistrationTest extends WebDriverParams {
     private final Faker faker = new Faker(new Locale("en"));
     private final APIServices apiServices = new APIServices();
-    private UserAccount account;
     private final List<UserAccount> testData = new ArrayList<>();
+    private UserAccount account;
 
-    @After
+    @AfterEach
     public void cleanUp() {
         apiServices.deleteAccounts(testData);
+//        Selenide.closeWebDriver();
     }
 
     @Test
-    public void successRegistration(){
+    public void successRegistration() {
         account = new UserAccount().
                 setEmail(faker.internet().emailAddress()).
                 setPassword(faker.internet().password()).
@@ -42,7 +42,7 @@ public class RegistrationTest {
     }
 
     @Test
-    public void registrationFiveCharPassReject(){
+    public void registrationFiveCharPassReject() {
         account = new UserAccount().
                 setEmail(faker.internet().emailAddress()).
                 setPassword(RandomStringUtils.randomAlphanumeric(5)).
@@ -50,7 +50,7 @@ public class RegistrationTest {
         testData.add(account);
         open(RegistrationPage.URL);
         RegistrationPage regPage = new RegistrationPage();
-        regPage.registrationAsNewClient(account.getName(), account.getEmail(), account.getPassword());
+        regPage.registrationUnsuccess(account.getName(), account.getEmail(), account.getPassword());
         assertTrue(regPage.errorPasswordIsDisplayed());
         assertTrue(regPage.isDisplayed());
     }

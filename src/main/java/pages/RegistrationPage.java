@@ -28,6 +28,14 @@ public class RegistrationPage {
         return new LoginPage();
     }
 
+    public RegistrationPage registrationUnsuccess(final String username, final String email, final String password) {
+        usernameField.setValue(username);
+        emailField.setValue(email);
+        passwordField.sendKeys(password);
+        registrationButton.click();
+        return this;
+    }
+
     public LoginPage loginButtonClick() {
         loginButton.click();
         return new LoginPage();
