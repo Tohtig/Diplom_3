@@ -1,4 +1,4 @@
-package apiService;
+package service;
 
 import io.restassured.config.RedirectConfig;
 import io.restassured.config.RestAssuredConfig;

@@ -4,11 +4,12 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class LoginPage {
-    private final SelenideElement emailField = $x("//div[@id=\"root\"]/div/main/div/form/fieldset[1]/div/div/input");
-    private final SelenideElement passwordField = $x("//div[@id=\"root\"]/div/main/div/form/fieldset[2]/div/div/input");
+    private final SelenideElement emailField = $("input[name='name']");
+    private final SelenideElement passwordField = $("input[name='Пароль']");
     private final SelenideElement loginButton = $x(".//button[text()='Войти']");
 
     public LoginPage() {

@@ -1,6 +1,6 @@
 package registration;
 
-import apiService.APIServices;
+import service.APIServices;
 import com.github.javafaker.Faker;
 import model.UserAccount;
 import org.junit.jupiter.api.AfterEach;
