@@ -1,2 +1,7 @@
-# Diplom_3
-Веб-приложение Stellar Burgers: https://stellarburgers.nomoreparties.site/
+# UI тесты
+API тесты для [приложения-песочницы](https://stellarburgers.nomoreparties.site).
+[Документация](https://code.s3.yandex.net/qa-automation-engineer/java/cheatsheets/paid-track/diplom/api-documentation.pdf) на API приложения.
+
+1. В maven подключены библиотеки: **selenide, JUnit 5, Allure, rest-assured, javafaker, lombok**. Настроен на работу с Java 11.
+2. Нужные тестовые данные создаются перед тестом и удаляются после того, как он выполнится.
+3. В репозиторий добавлен формируемый Allure-отчёт.
